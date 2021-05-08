@@ -1,5 +1,8 @@
+var currentTheme = ""
 $(document).ready(function () {
   get()
+  getPageTheme()
+  setPageTheme(currentTheme)
 })
 
 function addList() {
@@ -12,6 +15,7 @@ function addList() {
     set("https://gitcors.herokuapp.com/" + giturl)
   }
   else {
+    window.alert("Failed to add to list, Make sure you have the correct url")
     console.log("not epic")
   }
 }
@@ -23,7 +27,7 @@ function set(url) {
   if (localStorage.getItem("git") !== null) {
     var gitListOld = localStorage.getItem('git')
     gitList = JSON.parse(gitListOld)
-    console.log(gitList)
+    //console.log(gitList)
     if (!gitList.includes(url)) {
       gitList.push(url)
       localStorage.setItem("git", JSON.stringify(gitList));
@@ -32,7 +36,7 @@ function set(url) {
     gitList.push(url)
     localStorage.setItem("git", JSON.stringify(gitList));
   }
-  
+
   $('.toast').toast('show')
   get();
 }
@@ -45,7 +49,7 @@ function get() {
 }
 
 function populateData() {
-  
+
   document.getElementById('list-cont').innerHTML = "";
   for (x = 0; x < gitList.length; x++) {
     var feed = gitList[x];
@@ -57,7 +61,7 @@ function populateData() {
 
     $.get(feed, function (data) {
       console.log($(data).find("title").first().text())
-      
+
       title = $(data).find("title").first().text().replace("Release notes from ", "")
 
       var el = $(data).find("entry")[0];
@@ -116,6 +120,41 @@ function validURL(str) {
   return !!pattern.test(str);
 }
 
-function test(){
+function test() {
 
 }
+
+function getPageTheme() {
+  if (localStorage.getItem("theme") !== null) {
+    currentTheme = localStorage.getItem("theme")
+  } else {
+    localStorage.setItem("theme", "light");
+    currentTheme = "light"
+  }
+}
+
+function setPageTheme(theme) {
+  if (theme === 'light') {
+    $("#theme-icon").removeClass("bi-sun").addClass("bi-moon")
+  }
+  else {
+    $("#theme-icon").removeClass("bi-moon").addClass("bi-sun")
+  }
+
+  $("body").removeClass().addClass(currentTheme);
+}
+
+function changePageTheme() {
+
+  if (currentTheme === 'light') {
+    currentTheme = 'dark'
+  }
+  else {
+    currentTheme = 'light'
+  }
+  localStorage.setItem('theme', currentTheme)
+  setPageTheme(currentTheme)
+
+}
+
+
