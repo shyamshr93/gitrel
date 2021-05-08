@@ -45,7 +45,8 @@ function get() {
   var gitListOld = localStorage.getItem('git')
   gitList = JSON.parse(gitListOld)
   console.log(gitList)
-  populateData();
+  if (gitList !== null)
+    populateData();
 }
 
 function populateData() {
