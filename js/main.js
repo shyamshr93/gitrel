@@ -50,30 +50,31 @@ function get() {
 
 function populateData() {
 
-  document.getElementById('list-cont').innerHTML = "";
-  for (x = 0; x < gitList.length; x++) {
-    var feed = gitList[x];
-    var title = "";
-    var release = "";
-    var version = "";
-    var author = "";
-    var img_url = "";
+  if (gitList.length > 0) {
+    document.getElementById('list-cont').innerHTML = "";
+    for (x = 0; x < gitList.length; x++) {
+      var feed = gitList[x];
+      var title = "";
+      var release = "";
+      var version = "";
+      var author = "";
+      var img_url = "";
 
-    $.get(feed, function (data) {
-      console.log($(data).find("title").first().text())
+      $.get(feed, function (data) {
+        console.log($(data).find("title").first().text())
 
-      title = $(data).find("title").first().text().replace("Release notes from ", "")
+        title = $(data).find("title").first().text().replace("Release notes from ", "")
 
-      var el = $(data).find("entry")[0];
-      var releaseOld = $(el).find("updated").text();
-      version = $(el).find("title").text();
-      author = $(el).find("author").text();
-      img_url = $(el).find('media\\:thumbnail, thumbnail').attr('url');
-      console.log(img_url)
-      var d = new Date(releaseOld);
-      release = d.toLocaleDateString()
+        var el = $(data).find("entry")[0];
+        var releaseOld = $(el).find("updated").text();
+        version = $(el).find("title").text();
+        author = $(el).find("author").text();
+        img_url = $(el).find('media\\:thumbnail, thumbnail').attr('url');
+        console.log(img_url)
+        var d = new Date(releaseOld);
+        release = d.toLocaleDateString()
 
-      document.getElementById('list-cont').innerHTML += `<div class="tb-main-cont my-4">
+        document.getElementById('list-cont').innerHTML += `<div class="tb-main-cont my-4">
       <div class="tb-main">
         <div class="tr-img px-2">
               <img class="feed-icon" src="${img_url}" alt="Icon">
@@ -106,7 +107,8 @@ function populateData() {
       </div>
     </div>`;
 
-    });
+      });
+    }
   }
 }
 
