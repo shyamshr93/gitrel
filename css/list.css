@@ -7,6 +7,13 @@
     color: white;
     margin-bottom: -10px;
     font-size: 1.2em;
+    margin-right: 130px;
+    text-transform: uppercase;
+}
+
+.tb-main-cont {
+    display: flex;
+    flex-flow: row nowrap;
 }
 
 .tb-main {
@@ -16,6 +23,20 @@
     color: black;
     padding: 15px;
     border-radius: 50px;
+    box-shadow: 0 0 20px 5px #00000029;
+    flex: 1;
+}
+
+.tb-more-options {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    border-radius: 100px;
+    padding: 0 15px;
+    font-size: 1.3em;
+    background-color: white;
+    color: black;
+    box-shadow: 0 0 20px 5px #00000029;
 }
 
 .tr-header-name {
@@ -32,9 +53,14 @@
     text-align: right;
 }
 
-.tr-name {
+.tr-name-cont {
     flex: 1;
     text-align: left;
+}
+
+.tr-author {
+    font-size: 0.8em;
+    color: #7d7d7d;
 }
 
 .tr-ver {
@@ -49,4 +75,8 @@
 .feed-icon {
     max-height: 40px;
     border-radius: 40px;
+}
+
+.tr-btinfo{
+    font-size: 1.3em;
 }

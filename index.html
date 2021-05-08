@@ -36,19 +36,57 @@
             </div>
         </div>
         <div class="middle-cont mt-5">
+            <a class="d-none" onclick="test()">test</a>
+            <h3 class="text-left ml-2">
+                Your List
+            </h3>
             <div class="tb-header-main">
-                <div class="tr-header-name"> 
+                <div class="tr-header-name">
                     Project Name
                 </div>
                 <div class="tr-header-ver">
                     Latest Version
                 </div>
-                <div class="tr-header-date mr-3">
+                <div class="tr-header-date">
                     Release Date
                 </div>
-                
+
             </div>
-            <div id="test">
+            <div id="list-cont">
+                <!-- <div class="tb-main-cont my-4">
+                    <div class="tb-main">
+                        <div class="tr-img px-2">
+                                <img class="feed-icon" src="https://avatars.githubusercontent.com/u/68785835?s=60&amp;v=4" alt="Icon">
+                            </div>
+                            <div class="tr-name-cont"> 
+                            <div class="tr-name">
+                                MSINotes
+                            </div>
+                            <div class="tr-author">
+                                By 
+                        Xbotics7
+                    
+                            </div>
+                            </div>
+                            <div class="tr-ver">
+                                New Release (v1.2.2)
+                            </div>
+                            <div class="tr-date">
+                                1/10/2021
+                            </div>
+                            <div class="tr-btinfo mx-2">
+                                <a><i class="bi bi-chevron-down"></i></a>
+                            </div>
+                    </div>
+                    <div class="tb-more-options">
+                        <div class="tr-btinfo mx-2">
+                            <a><i class="bi bi-chevron-down"></i></a>
+                        </div>
+                        <div class="tr-btinfo mx-2">
+                            <a><i class="bi bi-chevron-down"></i></a>
+                        </div>
+                    </div>
+                </div> -->
             </div>
             <h2 class="header mt-5">
                 Track GitHub project releases
@@ -60,8 +98,9 @@
                 </div>
                 <a class="btn-help"><i class="bi bi-question"></i></a>
             </div>
-            <a class="btn-add" onclick="addList()"><i class="bi bi-plus mr-2" style="font-size: 1.5em;"></i>Add</a>
-            
+            <a class="btn-add" href="#" onclick="addList()"><i class="bi bi-plus mr-2"
+                    style="font-size: 1.5em;"></i>Add</a>
+
         </div>
         <footer>
             <h5 class="footer-header">Built by Shyam Sharma</h5>
@@ -73,12 +112,23 @@
                 <a class="footer-link">Privacy Policy</a>
             </div>
         </footer>
+        <div role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-delay="1000" data-autohide="true">
+            <div class="d-flex px-2 pr-3 bg-success">
+                <div class="toast-body" style="flex: 1; align-content: center;">
+                    Sucessfully added to list
+                </div>
+                <button type="button" class="ml-2 close text-white" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
     </div>
 </body>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
     crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
     integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
     crossorigin="anonymous"></script>
@@ -86,7 +136,6 @@
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
     crossorigin="anonymous"></script>
 
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://goessner.net/download/prj/jsonxml/xml2json.js"></script>
 <script src="js/main.js"></script>
 

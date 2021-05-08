@@ -32,6 +32,9 @@ function set(url) {
     gitList.push(url)
     localStorage.setItem("git", JSON.stringify(gitList));
   }
+  
+  $('.toast').toast('show')
+  get();
 }
 
 function get() {
@@ -43,11 +46,13 @@ function get() {
 
 function populateData() {
   
+  document.getElementById('list-cont').innerHTML = "";
   for (x = 0; x < gitList.length; x++) {
     var feed = gitList[x];
     var title = "";
     var release = "";
     var version = "";
+    var author = "";
     var img_url = "";
 
     $.get(feed, function (data) {
@@ -58,18 +63,24 @@ function populateData() {
       var el = $(data).find("entry")[0];
       var releaseOld = $(el).find("updated").text();
       version = $(el).find("title").text();
+      author = $(el).find("author").text();
       img_url = $(el).find('media\\:thumbnail, thumbnail').attr('url');
       console.log(img_url)
       var d = new Date(releaseOld);
       release = d.toLocaleDateString()
 
-
-      document.getElementById('test').innerHTML += `<div class="tb-main my-3">
+      document.getElementById('list-cont').innerHTML += `<div class="tb-main-cont my-4">
+      <div class="tb-main">
         <div class="tr-img px-2">
               <img class="feed-icon" src="${img_url}" alt="Icon">
           </div>
-          <div class="tr-name"> 
+          <div class="tr-name-cont"> 
+            <div class="tr-name">
               ${title}
+            </div>
+            <div class="tr-author">
+              By ${author}
+            </div>
           </div>
           <div class="tr-ver">
               ${version}
@@ -77,10 +88,19 @@ function populateData() {
           <div class="tr-date">
               ${release}
           </div>
-          <div class="tr-btinfo mx-2">
+          <div class="tr-btinfo mx-3">
               <a><i class="bi bi-chevron-down"></i></a>
           </div>
-      </div>`;
+      </div>
+      <div class="tb-more-options ml-2">
+          <div class="tr-btdel mx-2">
+              <a><i class="bi bi-trash2"></i></a>
+          </div>
+          <div class="tr-btmore mx-2">
+              <a><i class="bi bi-three-dots-vertical"></i></a>
+          </div>
+      </div>
+    </div>`;
 
     });
   }
@@ -94,4 +114,8 @@ function validURL(str) {
     '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
     '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
   return !!pattern.test(str);
+}
+
+function test(){
+
 }
