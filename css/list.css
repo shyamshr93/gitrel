@@ -58,6 +58,14 @@
     text-align: left;
 }
 
+.tr-name{
+    color: var(--textColor);
+}
+
+.tr-name:hover{
+    color: var(--textColor);
+}
+
 .tr-author {
     font-size: 0.8em;
     color: #7d7d7d;
@@ -72,11 +80,19 @@
     text-align: right;
 }
 
+.tr-btmore > a{
+    color: var(--textColor);
+}
+
+.tr-btmore > a:hover{
+    opacity: 0.6;
+}
+
 .feed-icon {
     max-height: 40px;
     border-radius: 40px;
 }
 
-.tr-btinfo{
+.tr-btinfo {
     font-size: 1.3em;
 }

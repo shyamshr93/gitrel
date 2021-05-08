@@ -1,4 +1,5 @@
 var currentTheme = ""
+var isMenuOpen = false;
 $(document).ready(function () {
   get()
   getPageTheme()
@@ -60,6 +61,7 @@ function populateData() {
       var version = "";
       var author = "";
       var img_url = "";
+      var project_url = "";
 
       $.get(feed, function (data) {
         console.log($(data).find("title").first().text())
@@ -71,7 +73,8 @@ function populateData() {
         version = $(el).find("title").text();
         author = $(el).find("author").text();
         img_url = $(el).find('media\\:thumbnail, thumbnail').attr('url');
-        console.log(img_url)
+        project_url = $(el).find('link').attr('href');
+
         var d = new Date(releaseOld);
         release = d.toLocaleDateString()
 
@@ -81,9 +84,9 @@ function populateData() {
               <img class="feed-icon" src="${img_url}" alt="Icon">
           </div>
           <div class="tr-name-cont"> 
-            <div class="tr-name">
+            <a class="tr-name" href="${project_url}" target="_blank">
               ${title}
-            </div>
+            </a>
             <div class="tr-author">
               By ${author}
             </div>
@@ -103,7 +106,7 @@ function populateData() {
               <a><i class="bi bi-trash2"></i></a>
           </div>
           <div class="tr-btmore mx-2">
-              <a><i class="bi bi-three-dots-vertical"></i></a>
+              <a href="#" onclick="openContextMenu(event)"><i class="bi bi-three-dots-vertical"></i></a>
           </div>
       </div>
     </div>`;
@@ -138,10 +141,10 @@ function getPageTheme() {
 
 function setPageTheme(theme) {
   if (theme === 'light') {
-    $("#theme-icon").removeClass("bi-sun").addClass("bi-moon")
+    $(".theme-icon").removeClass("bi-sun").addClass("bi-moon")
   }
   else {
-    $("#theme-icon").removeClass("bi-moon").addClass("bi-sun")
+    $(".theme-icon").removeClass("bi-moon").addClass("bi-sun")
   }
 
   $("body").removeClass().addClass(currentTheme);
@@ -159,5 +162,34 @@ function changePageTheme() {
   setPageTheme(currentTheme)
 
 }
+
+function openMenu(event) {
+
+  isMenuOpen = false;
+  if ($(".ham-menu").hasClass("d-flex")) {
+    $(".ham-menu").removeClass("d-flex").addClass("d-none")
+  } else {
+    $(".ham-menu").removeClass("d-none").addClass("d-flex")
+  }
+}
+
+function openContextMenu(event) {
+  isMenuOpen = false;
+  var clickY = event.clientY + document.body.scrollTop;
+  var clickX = event.clientX + document.body.scrollLeft;
+  document.getElementById("context-menu").style.top = (clickY) + "px";
+  
+  document.getElementById("context-menu").style.left = (clickX - 50) + "px";
+  $("#context-menu").removeClass("d-none").addClass("d-flex")
+}
+
+function bodyFunc() {
+  if ($(".menu-cont").hasClass("d-flex") && isMenuOpen) {
+    $(".menu-cont").removeClass("d-flex").addClass("d-none")
+  } else {
+    isMenuOpen = true
+  }
+}
+
 
 
