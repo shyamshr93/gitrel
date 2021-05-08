@@ -1,0 +1,52 @@
+.tb-header-main {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 50px;
+    background-color: transparent;
+    color: white;
+    margin-bottom: -10px;
+    font-size: 1.2em;
+}
+
+.tb-main {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    color: black;
+    padding: 15px;
+    border-radius: 50px;
+}
+
+.tr-header-name {
+    flex: 1;
+    text-align: left;
+}
+
+.tr-header-ver {
+    flex: 1;
+}
+
+.tr-header-date {
+    flex: 1;
+    text-align: right;
+}
+
+.tr-name {
+    flex: 1;
+    text-align: left;
+}
+
+.tr-ver {
+    flex: 1;
+}
+
+.tr-date {
+    flex: 1;
+    text-align: right;
+}
+
+.feed-icon {
+    max-height: 40px;
+    border-radius: 40px;
+}

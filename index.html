@@ -1,14 +1,93 @@
-<html>
-    <head>
-    </head>
-    <body>
-        <div id="hello"></div>
-    </body>
-    
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
- 
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="main.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>gitrel - Track github project new releases</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="Tech" name="keywords" />
+    <meta content="gitrel - Track your favourite github project new releases" name="description" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://shyamshr93.github.io/gitrel/" />
+
+    <link href="images/favicon.png" rel="icon">
+    <link href="images/favicon.png" rel="apple-touch-icon">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/list.css">
+
+    <!-- icon library -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+</head>
+
+<body>
+    <div class="container main-cont pt-4 pb-2">
+        <div class="container-fluid top-cont">
+            <h3 class="title">gitrel</h3>
+
+            <div class="top-right-cont">
+                <a class="btn-social"><i class="bi bi-twitter"></i></a>
+                <a class="btn-social"><i class="bi bi-github"></i></a>
+                <a class="btn-social"><i class="bi bi-moon"></i></a>
+                <a class="btn-social"><i class="bi bi-info"></i></a>
+            </div>
+        </div>
+        <div class="middle-cont mt-5">
+            <div class="tb-header-main">
+                <div class="tr-header-name"> 
+                    Project Name
+                </div>
+                <div class="tr-header-ver">
+                    Latest Version
+                </div>
+                <div class="tr-header-date mr-3">
+                    Release Date
+                </div>
+                
+            </div>
+            <div id="test">
+            </div>
+            <h2 class="header mt-5">
+                Track GitHub project releases
+            </h2>
+            <div class="d-flex my-4">
+                <div class="d-flex w-100 search-cont">
+                    <div class="search-icon"><i class="bi bi-search"></i></div>
+                    <input class="git-input" placeholder="github release project url here..">
+                </div>
+                <a class="btn-help"><i class="bi bi-question"></i></a>
+            </div>
+            <a class="btn-add" onclick="addList()"><i class="bi bi-plus mr-2" style="font-size: 1.5em;"></i>Add</a>
+            
+        </div>
+        <footer>
+            <h5 class="footer-header">Built by Shyam Sharma</h5>
+            <div class="footer-right-cont">
+                <a class="footer-link">Github</a>
+                <a class="footer-link">Twitter</a>
+                <a class="footer-link">About</a>
+                <a class="footer-link">Help</a>
+                <a class="footer-link">Privacy Policy</a>
+            </div>
+        </footer>
+    </div>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://goessner.net/download/prj/jsonxml/xml2json.js"></script>
+<script src="js/main.js"></script>
+
 </html>
