@@ -34,6 +34,8 @@ function set(url) {
       localStorage.setItem("git", JSON.stringify(gitList));
     }
   } else {
+    if (gitList === null)
+      gitList = [];
     gitList.push(url)
     localStorage.setItem("git", JSON.stringify(gitList));
   }
@@ -178,7 +180,7 @@ function openContextMenu(event) {
   var clickY = event.clientY + document.body.scrollTop;
   var clickX = event.clientX + document.body.scrollLeft;
   document.getElementById("context-menu").style.top = (clickY) + "px";
-  
+
   document.getElementById("context-menu").style.left = (clickX - 50) + "px";
   $("#context-menu").removeClass("d-none").addClass("d-flex")
 }
