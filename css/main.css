@@ -66,6 +66,7 @@ html, body {
 
 .ham-link {
     color: var(--textColor);
+    background-color: var(--card-bg);
     text-decoration: none;
     padding: 12px 20px;
     width: 300px;

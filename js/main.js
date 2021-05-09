@@ -48,13 +48,17 @@ function get() {
   var gitListOld = localStorage.getItem('git')
   gitList = JSON.parse(gitListOld)
   console.log(gitList)
-  if (gitList !== null)
+  if (gitList !== null) {
     populateData();
+    //console.log("done")
+    //$(".load-icon").removeClass("d-block").addClass("d-none")
+  }
 }
 
 function populateData() {
 
   if (gitList.length > 0) {
+
     document.getElementById('list-cont').innerHTML = "";
     for (x = 0; x < gitList.length; x++) {
       var feed = gitList[x];
@@ -65,7 +69,9 @@ function populateData() {
       var img_url = "";
       var project_url = "";
 
+      $(".load-icon").removeClass("d-none").addClass("d-block")
       $.get(feed, function (data) {
+        $(".load-icon").removeClass("d-none").addClass("d-block")
         console.log($(data).find("title").first().text())
 
         title = $(data).find("title").first().text().replace("Release notes from ", "")
@@ -113,7 +119,9 @@ function populateData() {
       </div>
     </div>`;
 
+        $(".load-icon").removeClass("d-block").addClass("d-none")
       });
+
     }
   }
 }
