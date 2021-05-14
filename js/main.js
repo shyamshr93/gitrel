@@ -98,8 +98,8 @@ function populateData() {
         release = d.getDate() + "/" + monthNames[d.getMonth()] + "/" + d.getFullYear()
 
 
-        document.getElementById('list-cont').innerHTML += `<div class="tb-main-cont my-4">
-        <div style="flex: 1;">
+        document.getElementById('list-cont').innerHTML += `<div>
+        <div class="tb-main-cont my-4">
           <div class="tb-main">
             <div class="tr-img px-2">
                   <img class="feed-icon" src="${img_url}" alt="Icon">
@@ -122,10 +122,6 @@ function populateData() {
                   <a><i class="bi bi-chevron-down"></i></a>
               </div>
           </div>
-          <div class="tb-content">
-            ${feed_content}
-          </div>
-        </div>
         <div class="tb-more-options ml-2">
             <div class="tr-btdel mx-2">
                 <a><i class="bi bi-trash2"></i></a>
@@ -133,6 +129,10 @@ function populateData() {
             <div class="tr-btmore mx-2">
                 <a href="#" onclick="openContextMenu(event)"><i class="bi bi-three-dots-vertical"></i></a>
             </div>
+        </div>
+        </div>
+        <div class="tb-content py-2">
+          ${feed_content}
         </div>
       </div>`;
 
