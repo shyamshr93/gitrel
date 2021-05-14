@@ -4,6 +4,7 @@
     --main-bg1: #67BF9E;
     --main-bg2: #217DBB;
     --textColor: #000;
+    --textHoverColor: #7d7d7d;
     --bt-bg: rgba(255, 255, 255, 0.541);
     --search-icon: #c1c1c1;
 }
@@ -14,6 +15,7 @@
     --main-bg1: #1e1e1e;
     --main-bg2: #1e1e1e;
     --textColor: white;
+    --textHoverColor: #b2b2b2;
     --bt-bg: rgba(36, 36, 36, 0.541);
     --search-icon: #c1c1c1;
 }

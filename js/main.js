@@ -44,6 +44,10 @@ function set(url) {
   get();
 }
 
+function delFeed(url) {
+
+}
+
 function get() {
   var gitListOld = localStorage.getItem('git')
   gitList = JSON.parse(gitListOld)
@@ -63,6 +67,7 @@ function populateData() {
     for (x = 0; x < gitList.length; x++) {
       var feed = gitList[x];
       var title = "";
+      var feed_content = "";
       var release = "";
       var version = "";
       var author = "";
@@ -78,46 +83,58 @@ function populateData() {
 
         var el = $(data).find("entry")[0];
         var releaseOld = $(el).find("updated").text();
+        feed_content = $(el).find("content").text();
         version = $(el).find("title").text();
-        author = $(el).find("author").text();
+        author = $(el).find("author").text().trim();
         img_url = $(el).find('media\\:thumbnail, thumbnail').attr('url');
         project_url = $(el).find('link').attr('href');
 
         var d = new Date(releaseOld);
-        release = d.toLocaleDateString()
+        d.setDate(d.getDate() - 1)
+        var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+          "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+        ];
+
+        release = d.getDate() + "/" + monthNames[d.getMonth()] + "/" + d.getFullYear()
+
 
         document.getElementById('list-cont').innerHTML += `<div class="tb-main-cont my-4">
-      <div class="tb-main">
-        <div class="tr-img px-2">
-              <img class="feed-icon" src="${img_url}" alt="Icon">
+        <div style="flex: 1;">
+          <div class="tb-main">
+            <div class="tr-img px-2">
+                  <img class="feed-icon" src="${img_url}" alt="Icon">
+              </div>
+              <div class="tr-name-cont"> 
+                <a class="tr-name" href="${project_url}" target="_blank">
+                  ${title}
+                </a>
+                <a class="tr-author" href="https://github.com/${author}" target="_blank">
+                  By ${author}
+                </a>
+              </div>
+              <div class="tr-ver">
+                  ${version}
+              </div>
+              <div class="tr-date">
+                  ${release}
+              </div>
+              <div class="tr-btinfo mx-3">
+                  <a><i class="bi bi-chevron-down"></i></a>
+              </div>
           </div>
-          <div class="tr-name-cont"> 
-            <a class="tr-name" href="${project_url}" target="_blank">
-              ${title}
-            </a>
-            <div class="tr-author">
-              By ${author}
+          <div class="tb-content">
+            ${feed_content}
+          </div>
+        </div>
+        <div class="tb-more-options ml-2">
+            <div class="tr-btdel mx-2">
+                <a><i class="bi bi-trash2"></i></a>
             </div>
-          </div>
-          <div class="tr-ver">
-              ${version}
-          </div>
-          <div class="tr-date">
-              ${release}
-          </div>
-          <div class="tr-btinfo mx-3">
-              <a><i class="bi bi-chevron-down"></i></a>
-          </div>
-      </div>
-      <div class="tb-more-options ml-2">
-          <div class="tr-btdel mx-2">
-              <a><i class="bi bi-trash2"></i></a>
-          </div>
-          <div class="tr-btmore mx-2">
-              <a href="#" onclick="openContextMenu(event)"><i class="bi bi-three-dots-vertical"></i></a>
-          </div>
-      </div>
-    </div>`;
+            <div class="tr-btmore mx-2">
+                <a href="#" onclick="openContextMenu(event)"><i class="bi bi-three-dots-vertical"></i></a>
+            </div>
+        </div>
+      </div>`;
 
         $(".load-icon").removeClass("d-block").addClass("d-none")
       });
