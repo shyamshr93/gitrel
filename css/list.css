@@ -7,7 +7,7 @@
     color: white;
     margin-bottom: -10px;
     font-size: 1.2em;
-    margin-right: 130px;
+    margin-right: 100px;
     text-transform: uppercase;
 }
 
@@ -33,7 +33,7 @@
     border-radius: 100px;
     min-height: 100px;
     max-height: 400px;
-    margin-right: 110px;
+    margin-right: 80px;
     padding: 0 40px;
     text-align: left;
 }
@@ -71,6 +71,8 @@
 
 .tr-header-ver {
     flex: 1;
+    white-space: nowrap;
+
 }
 
 .tr-header-date {
@@ -85,6 +87,7 @@
 
 .tr-name, .tr-name:hover, .tr-author:hover, .tr-btmore>a, .tr-ver>a {
     color: var(--textColor);
+    white-space: nowrap;
 }
 
 .tr-author {
@@ -95,6 +98,7 @@
 
 .tr-ver {
     flex: 1;
+    margin-left: 50px;
 }
 
 .tr-date {
@@ -120,7 +124,7 @@
     .tb-header-main {
         margin-bottom: -20px;
         font-size: 1.0em;
-        margin-right: 100px;
+        margin-right: 10px;
     }
     .tb-main {
         font-size: 0.9em;
