@@ -27,12 +27,21 @@
     flex: 1;
 }
 
-.tb-content{
+.tb-content {
     background-color: var(--card-bg);
     color: var(--textColor);
     border-radius: 100px;
     min-height: 100px;
+    max-height: 400px;
     margin-right: 110px;
+    padding: 0 40px;
+    text-align: left;
+}
+
+.tr-descripHeader {
+    margin: 5px 0;
+    font-size: 1.1em;
+    font-weight: 600;
 }
 
 .tb-more-options {
@@ -47,12 +56,11 @@
     box-shadow: 0 0 20px 5px #00000029;
 }
 
-.tb-more-options > div{
-    
+.tb-more-options>div {
     transition: all .3s ease-out;
 }
 
-.tb-more-options > div:hover{
+.tb-more-options>div:hover {
     transform: scale(1.1);
 }
 
@@ -75,7 +83,7 @@
     text-align: left;
 }
 
-.tr-name, .tr-name:hover, .tr-author:hover, .tr-btmore > a, .tr-ver > a{
+.tr-name, .tr-name:hover, .tr-author:hover, .tr-btmore>a, .tr-ver>a {
     color: var(--textColor);
 }
 
@@ -94,7 +102,7 @@
     text-align: right;
 }
 
-.tr-btmore > a:hover{
+.tr-btmore>a:hover {
     opacity: 0.6;
 }
 
@@ -105,4 +113,16 @@
 
 .tr-btinfo {
     font-size: 1.3em;
+}
+
+/* Mobile CSS */
+@media only screen and (max-width: 768px) {
+    .tb-header-main {
+        margin-bottom: -20px;
+        font-size: 1.0em;
+        margin-right: 100px;
+    }
+    .tb-main {
+        font-size: 0.9em;
+    }
 }

@@ -10,6 +10,10 @@ function addList() {
 
   var giturl = $('.git-input').val();
 
+  addUrlToArray(giturl)
+}
+
+function addUrlToArray(giturl) {
   if (!giturl.includes("releases"))
     giturl = giturl + "/releases"
 
@@ -17,7 +21,6 @@ function addList() {
 
   giturl = giturl.replace(/([^:]\/)\/+/g, "$1");
   if (validURL(giturl) && giturl.includes("releases.atom") && giturl.includes("github.com")) {
-
     set("https://gitcors.herokuapp.com/" + giturl)
   }
   else {
@@ -80,6 +83,9 @@ function populateData() {
   var count = 0;
   if (gitList.length > 0) {
 
+    $("#add-main-cont").removeClass("d-block").addClass("d-none")
+    $(".cont-list").removeClass("d-none").addClass("d-block")
+
     document.getElementById('list-cont').innerHTML = "";
     for (x = 0; x < gitList.length; x++) {
       var feed = gitList[x];
@@ -96,7 +102,6 @@ function populateData() {
 
       $.get(feed, function (data) {
 
-        //$(".load-icon").removeClass("d-none").addClass("d-block")
         var divContentName = "Cont" + count;
         count++;
 
@@ -161,21 +166,30 @@ function populateData() {
             <div class="tr-btdel mx-2">
                 <a><i class="bi bi-trash" onclick="delFeed('${feed_url}')"></i></a>
             </div>
-            <div class="tr-btmore mx-2">
+            <div class="tr-btmore mx-2 d-none">
                 <a onclick="openContextMenu(event)"><i class="bi bi-three-dots-vertical"></i></a>
             </div>
         </div>
         </div>
         <div id="tb${divContentName}" class="tb-content py-2 d-none">
-          ${feed_content}
+          <div class="tr-descripHeader">
+            Description
+          </div>
+          <div class="tr-descrip">
+            ${feed_content}
+          </div>
         </div>
       </div>`;
 
         $(".load-icon").removeClass("d-block").addClass("d-none")
       });
-      $(".load-icon").removeClass("d-block").addClass("d-none")
+      // $(".load-icon").removeClass("d-block").addClass("d-none")
 
     }
+  }
+  else {
+    $(".cont-list").removeClass("d-block").addClass("d-none")
+    $("#add-main-cont").removeClass("d-none").addClass("d-block")
   }
 }
 
@@ -201,6 +215,19 @@ function validURL(str) {
 }
 
 function test() {
+
+}
+
+function openGitPop() {
+  $('#githubModalCenter').modal({
+    keyboard: false
+  })
+}
+
+function addProject() {
+  var giturl = $("#githubVal").val()
+  $('#githubModalCenter').modal('hide')
+  addUrlToArray(giturl)
 
 }
 
