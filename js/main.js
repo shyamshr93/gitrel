@@ -9,8 +9,13 @@ $(document).ready(function () {
 function addList() {
 
   var giturl = $('.git-input').val();
+
+  if (!giturl.includes("releases"))
+    giturl = giturl + "/releases"
+
   giturl = giturl + ".atom";
 
+  giturl = giturl.replace(/([^:]\/)\/+/g, "$1");
   if (validURL(giturl) && giturl.includes("releases.atom") && giturl.includes("github.com")) {
 
     set("https://gitcors.herokuapp.com/" + giturl)

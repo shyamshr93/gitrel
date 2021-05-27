@@ -139,23 +139,16 @@ html, body {
 }
 
 .btn-help {
-    text-decoration: none;
-    font-size: 1.5em;
-    display: inline-flex;
-    width: 68.73px;
-    height: 64px;
-    margin-left: 8px;
-    border-radius: 40px;
-    box-shadow: 0 0 15px 7px #0000001f;
-    background-color: var(--card-bg);
-    color: var(--textColor);
+    margin-right: 10px;
+    margin-top: 10px;
+    text-align: right;
+    display: block;
+    color: white;
     transition: all .3s ease-out;
 }
 
 .btn-help:hover {
-    color: var(--textColor);
-    background-color: var(--bt-bg);
-    transform: scale(1.05);
+    color: white;
 }
 
 .btn-add {
