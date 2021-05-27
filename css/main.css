@@ -20,6 +20,10 @@
     --search-icon: #c1c1c1;
 }
 
+a {
+    cursor: pointer;
+}
+
 * {
     transition: all .2s ease-out;
 }

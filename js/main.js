@@ -61,6 +61,7 @@ function get() {
 
 function populateData() {
 
+  var count = 0;
   if (gitList.length > 0) {
 
     document.getElementById('list-cont').innerHTML = "";
@@ -71,23 +72,38 @@ function populateData() {
       var release = "";
       var version = "";
       var author = "";
+      var author_link = "";
       var img_url = "";
       var project_url = "";
+      var version_url = "";
 
-      $(".load-icon").removeClass("d-none").addClass("d-block")
+
       $.get(feed, function (data) {
+
+        //$(".load-icon").removeClass("d-none").addClass("d-block")
+        var divContentName = "Cont" + count;
+        count++;
+
         $(".load-icon").removeClass("d-none").addClass("d-block")
+
         console.log($(data).find("title").first().text())
+        project_url = $(data).find("link").first().attr('href').replace("releases", "")
 
         title = $(data).find("title").first().text().replace("Release notes from ", "")
+        console.log(title)
+
+        author_link = project_url.replace("/" + title, "")
+        author = author_link.replace("https://github.com/", "").replace("/", "")
 
         var el = $(data).find("entry")[0];
+
         var releaseOld = $(el).find("updated").text();
         feed_content = $(el).find("content").text();
         version = $(el).find("title").text();
-        author = $(el).find("author").text().trim();
+        //author = $(el).find("author").text().trim();
         img_url = $(el).find('media\\:thumbnail, thumbnail').attr('url');
-        project_url = $(el).find('link').attr('href');
+        //project_url = $(el).find('link').attr('href');
+        version_url = $(el).find('link').attr('href');
 
         var d = new Date(releaseOld);
         d.setDate(d.getDate() - 1)
@@ -98,48 +114,60 @@ function populateData() {
         release = d.getDate() + "/" + monthNames[d.getMonth()] + "/" + d.getFullYear()
 
 
-        document.getElementById('list-cont').innerHTML += `<div>
+        document.getElementById('list-cont').innerHTML += `<div id="${divContentName}">
         <div class="tb-main-cont my-4">
           <div class="tb-main">
             <div class="tr-img px-2">
-                  <img class="feed-icon" src="${img_url}" alt="Icon">
+                  <img class="feed-icon" src="${img_url}" alt="">
               </div>
               <div class="tr-name-cont"> 
                 <a class="tr-name" href="${project_url}" target="_blank">
                   ${title}
                 </a>
-                <a class="tr-author" href="https://github.com/${author}" target="_blank">
+                <a class="tr-author" href="${author_link}" target="_blank">
                   By ${author}
                 </a>
               </div>
               <div class="tr-ver">
-                  ${version}
+                  <a href="${version_url}" target="_blank">${version}</a>
               </div>
               <div class="tr-date">
                   ${release}
               </div>
               <div class="tr-btinfo mx-3">
-                  <a><i class="bi bi-chevron-down"></i></a>
+                  <a onclick="contVisibility('${divContentName}')"><i id="icon${divContentName}" class="bi bi-chevron-down"></i></a>
               </div>
           </div>
         <div class="tb-more-options ml-2">
             <div class="tr-btdel mx-2">
-                <a><i class="bi bi-trash2"></i></a>
+                <a><i class="bi bi-trash"></i></a>
             </div>
             <div class="tr-btmore mx-2">
-                <a href="#" onclick="openContextMenu(event)"><i class="bi bi-three-dots-vertical"></i></a>
+                <a onclick="openContextMenu(event)"><i class="bi bi-three-dots-vertical"></i></a>
             </div>
         </div>
         </div>
-        <div class="tb-content py-2">
+        <div id="tb${divContentName}" class="tb-content py-2 d-none">
           ${feed_content}
         </div>
       </div>`;
 
         $(".load-icon").removeClass("d-block").addClass("d-none")
       });
+      $(".load-icon").removeClass("d-block").addClass("d-none")
 
     }
+  }
+}
+
+function contVisibility(contID) {
+  if ($("#tb" + contID).hasClass("d-none")) {
+    $("#icon" + contID).removeClass("bi-chevron-down").addClass("bi-chevron-up")
+    $("#tb" + contID).removeClass("d-none").addClass("d-block")
+  }
+  else {
+    $("#icon" + contID).removeClass("bi-chevron-up").addClass("bi-chevron-down")
+    $("#tb" + contID).removeClass("d-block").addClass("d-none")
   }
 }
 

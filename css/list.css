@@ -32,6 +32,7 @@
     color: var(--textColor);
     border-radius: 100px;
     min-height: 100px;
+    margin-right: 110px;
 }
 
 .tb-more-options {
@@ -44,6 +45,15 @@
     background-color: var(--card-bg);
     color: var(--textColor);
     box-shadow: 0 0 20px 5px #00000029;
+}
+
+.tb-more-options > div{
+    
+    transition: all .3s ease-out;
+}
+
+.tb-more-options > div:hover{
+    transform: scale(1.1);
 }
 
 .tr-header-name {
@@ -65,11 +75,7 @@
     text-align: left;
 }
 
-.tr-name{
-    color: var(--textColor);
-}
-
-.tr-name:hover{
+.tr-name, .tr-name:hover, .tr-author:hover, .tr-btmore > a, .tr-ver > a{
     color: var(--textColor);
 }
 
@@ -79,10 +85,6 @@
     color: var(--textHoverColor);
 }
 
-.tr-author:hover{
-    color: var(--textColor);
-}
-
 .tr-ver {
     flex: 1;
 }
@@ -90,10 +92,6 @@
 .tr-date {
     flex: 1;
     text-align: right;
-}
-
-.tr-btmore > a{
-    color: var(--textColor);
 }
 
 .tr-btmore > a:hover{
