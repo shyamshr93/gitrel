@@ -30,7 +30,7 @@
 .tb-content {
     background-color: var(--card-bg);
     color: var(--textColor);
-    border-radius: 100px;
+    border-radius: 20px;
     min-height: 100px;
     max-height: 400px;
     margin-right: 80px;
@@ -42,6 +42,12 @@
     margin: 5px 0;
     font-size: 1.1em;
     font-weight: 600;
+}
+
+.tr-descrip {
+    overflow-y: auto;
+    max-height: 200px;
+    font-size: 1em !important;
 }
 
 .tb-more-options {
@@ -72,7 +78,7 @@
 .tr-header-ver {
     flex: 1;
     white-space: nowrap;
-
+    margin-left: 50px;
 }
 
 .tr-header-date {
@@ -98,7 +104,7 @@
 
 .tr-ver {
     flex: 1;
-    margin-left: 50px;
+    margin: 0 10px;
 }
 
 .tr-date {
@@ -120,6 +126,7 @@
 }
 
 /* Mobile CSS */
+
 @media only screen and (max-width: 768px) {
     .tb-header-main {
         margin-bottom: -20px;

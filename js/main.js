@@ -107,14 +107,14 @@ function populateData() {
 
         $(".load-icon").removeClass("d-none").addClass("d-block")
 
-        console.log($(data).find("title").first().text())
+        //console.log($(data).find("title").first().text())
 
         var feed_url = "https://gitcors.herokuapp.com/" + $(data).find("link").first().attr('href') + ".atom";
 
         project_url = $(data).find("link").first().attr('href').replace("releases", "")
 
         title = $(data).find("title").first().text().replace("Release notes from ", "")
-        console.log(title)
+        //console.log(title)
 
         author_link = project_url.replace("/" + title, "")
         author = author_link.replace("https://github.com/", "").replace("/", "")
@@ -135,7 +135,10 @@ function populateData() {
           "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
         ];
 
-        release = d.getDate() + "/" + monthNames[d.getMonth()] + "/" + d.getFullYear()
+        if (monthNames[d.getMonth()] !== undefined)
+          release = d.getDate() + "/" + monthNames[d.getMonth()] + "/" + d.getFullYear()
+        else
+          release = "none"
 
 
         document.getElementById('list-cont').innerHTML += `<div id="${divContentName}">
@@ -182,6 +185,7 @@ function populateData() {
       </div>`;
 
         $(".load-icon").removeClass("d-block").addClass("d-none")
+        $(".tr-header-name").text("PROJECT (" + count + ")")
       });
       // $(".load-icon").removeClass("d-block").addClass("d-none")
 
