@@ -45,6 +45,17 @@ function set(url) {
 }
 
 function delFeed(url) {
+  if (confirm("Do you want to delete this feed?")) {
+    const index = gitList.indexOf(url);
+    console.log(index)
+    if (index > -1) {
+      gitList.splice(index, 1);
+      localStorage.setItem("git", JSON.stringify(gitList));
+      populateData();
+    }
+  } else {
+    console.log("epic prank")
+  }
 
 }
 
@@ -87,6 +98,9 @@ function populateData() {
         $(".load-icon").removeClass("d-none").addClass("d-block")
 
         console.log($(data).find("title").first().text())
+
+        var feed_url = "https://gitcors.herokuapp.com/" + $(data).find("link").first().attr('href') + ".atom";
+
         project_url = $(data).find("link").first().attr('href').replace("releases", "")
 
         title = $(data).find("title").first().text().replace("Release notes from ", "")
@@ -140,7 +154,7 @@ function populateData() {
           </div>
         <div class="tb-more-options ml-2">
             <div class="tr-btdel mx-2">
-                <a><i class="bi bi-trash"></i></a>
+                <a><i class="bi bi-trash" onclick="delFeed('${feed_url}')"></i></a>
             </div>
             <div class="tr-btmore mx-2">
                 <a onclick="openContextMenu(event)"><i class="bi bi-three-dots-vertical"></i></a>
