@@ -8,12 +8,14 @@
     margin-bottom: -10px;
     font-size: 1.2em;
     margin-right: 100px;
+    min-width: 500px;
     text-transform: uppercase;
 }
 
 .tb-main-cont {
     display: flex;
     flex-flow: row nowrap;
+    min-width: 600px;
 }
 
 .tb-main {

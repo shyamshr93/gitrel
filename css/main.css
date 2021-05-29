@@ -177,6 +177,8 @@ footer {
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
+    white-space: nowrap;
+    min-width: 600px;
 }
 
 .footer-right-cont {
@@ -201,10 +203,8 @@ footer {
     border: 0;
 }
 
-
-
 @media (min-width: 576px) and (max-width: 1200px) {
-    .main-cont{
+    .main-cont {
         max-width: 90%;
     }
 }
