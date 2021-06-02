@@ -81,7 +81,7 @@ function get() {
 function populateData() {
 
   var count = 0;
-  if (gitList.length < 0) {
+  if (gitList.length > 0) {
 
     $("#add-main-cont").removeClass("d-block").addClass("d-none")
     $(".load-icon").removeClass("d-none").addClass("d-block")

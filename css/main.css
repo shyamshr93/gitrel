@@ -183,7 +183,11 @@ footer {
     flex-flow: row nowrap;
     align-items: center;
     white-space: nowrap;
-    min-width: 600px;
+    margin-top: 50px;
+}
+
+.footer-header {
+    font-weight: 600;
 }
 
 .footer-right-cont {
@@ -211,5 +215,25 @@ footer {
 @media (min-width: 576px) and (max-width: 1200px) {
     .main-cont {
         max-width: 90%;
+    }
+}
+
+/* Mobile CSS */
+
+@media only screen and (max-width: 768px) {
+    footer {
+        flex-flow: column wrap;
+    }
+    .footer-right-cont {
+        margin-left: 0;
+    }
+    .header {
+        font-size: 1.8em;
+    }
+    .git-input {
+        padding: 10px 5px;
+    }
+    body {
+        background-image: linear-gradient(var(--main-bg1), var(--main-bg2));
     }
 }
