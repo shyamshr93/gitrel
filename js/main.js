@@ -81,9 +81,10 @@ function get() {
 function populateData() {
 
   var count = 0;
-  if (gitList.length > 0) {
+  if (gitList.length < 0) {
 
     $("#add-main-cont").removeClass("d-block").addClass("d-none")
+    $(".load-icon").removeClass("d-none").addClass("d-block")
     $(".cont-list").removeClass("d-none").addClass("d-block")
 
     document.getElementById('list-cont').innerHTML = "";
@@ -98,7 +99,7 @@ function populateData() {
       var img_url = "";
       var project_url = "";
       var version_url = "";
-
+      $(".load-icon").removeClass("d-none").addClass("d-block")
 
       $.get(feed, function (data) {
 

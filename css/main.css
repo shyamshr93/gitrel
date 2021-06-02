@@ -43,6 +43,11 @@ html, body {
     min-height: 100vh;
 }
 
+.title {
+    font-size: 1.6em;
+    font-weight: 600;
+}
+
 .main-cont {
     display: flex;
     flex-direction: column;
