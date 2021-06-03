@@ -62,7 +62,7 @@
     flex-flow: row nowrap;
     align-items: center;
     border-radius: 100px;
-    padding: 0 15px;
+    padding: 0 18px;
     font-size: 1.3em;
     background-color: var(--card-bg);
     color: var(--textColor);

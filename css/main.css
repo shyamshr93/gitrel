@@ -31,7 +31,7 @@ a {
 body {
     background-image: linear-gradient(to right, var(--main-bg1), var(--main-bg2));
     color: white;
-    font-family: 'Roboto', 'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background-repeat: no-repeat;
     background-attachment: fixed;
     padding: 0;
