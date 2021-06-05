@@ -1,4 +1,4 @@
-.cont-list h1{
+.cont-list h1 {
     font-size: 1.8em;
     font-weight: 600;
 }
@@ -10,7 +10,7 @@
     border-radius: 50px;
     background-color: transparent;
     color: white;
-    margin-bottom: -10px;
+    margin-bottom: -20px;
     font-size: 1.2em;
     margin-right: 100px;
     min-width: 500px;
@@ -77,24 +77,25 @@
     transform: scale(1.1);
 }
 
-.tr-header-name {
+.tr-header-name, .tr-header-ver, .tr-header-date, .tr-name-cont, .tr-ver, .tr-date-cont {
     flex: 1;
+}
+
+.tr-header-name {
     text-align: left;
+    margin-left: 20px;
 }
 
 .tr-header-ver {
-    flex: 1;
     white-space: nowrap;
     margin-left: 50px;
 }
 
 .tr-header-date {
-    flex: 1;
     text-align: right;
 }
 
 .tr-name-cont {
-    flex: 1;
     text-align: left;
 }
 
@@ -103,19 +104,17 @@
     white-space: nowrap;
 }
 
-.tr-author {
+.tr-author, .tr-daysago {
     display: block;
     font-size: 0.8em;
     color: var(--textHoverColor);
 }
 
 .tr-ver {
-    flex: 1;
     margin: 0 10px;
 }
 
-.tr-date {
-    flex: 1;
+.tr-date-cont {
     text-align: right;
 }
 

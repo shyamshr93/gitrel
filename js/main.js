@@ -123,6 +123,8 @@ function populateData() {
         var el = $(data).find("entry")[0];
 
         var releaseOld = $(el).find("updated").text();
+        //console.log(releaseOld1)
+
         feed_content = $(el).find("content").text();
         version = $(el).find("title").text();
         //author = $(el).find("author").text().trim();
@@ -131,6 +133,8 @@ function populateData() {
         version_url = $(el).find('link').attr('href');
 
         var d = new Date(releaseOld);
+
+
         d.setDate(d.getDate() - 1)
         var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
           "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
@@ -140,6 +144,10 @@ function populateData() {
           release = d.getDate() + "/" + monthNames[d.getMonth()] + "/" + d.getFullYear()
         else
           release = "none"
+
+
+        var difference = Math.abs(new Date() - d);
+        daysAgo = parseInt(difference / (1000 * 3600 * 24))
 
 
         document.getElementById('list-cont').innerHTML += `<div id="${divContentName}">
@@ -159,8 +167,13 @@ function populateData() {
               <div class="tr-ver">
                   <a href="${version_url}" target="_blank">${version}</a>
               </div>
-              <div class="tr-date">
-                  ${release}
+              <div class="tr-date-cont">
+                  <div class="tr-date">
+                    ${release}
+                  </div>
+                  <div class="tr-daysago">
+                    ${daysAgo} Days Ago
+                  </div>
               </div>
               <div class="tr-btinfo mx-3">
                   <a onclick="contVisibility('${divContentName}')"><i id="icon${divContentName}" class="bi bi-chevron-down"></i></a>
