@@ -131,6 +131,14 @@
     font-size: 1.3em;
 }
 
+.btnSort{
+    color: white;
+}
+
+.btnSort:hover{
+    color: #007bff;
+}
+
 /* Mobile CSS */
 
 @media only screen and (max-width: 768px) {

@@ -64,7 +64,89 @@ function delFeed(url) {
   } else {
     console.log("epic prank")
   }
+}
 
+var mainList = [];
+
+function sortUpRel()
+{
+  mainList.sort(sortUpFunction)
+  populateList(mainList)
+}
+
+function sortDownRel()
+{
+  mainList.sort(sortDownFunction)
+  populateList(mainList)
+}
+
+function populateList(main_array)
+{
+  document.getElementById('list-cont').innerHTML = "";
+  main_array.forEach(el =>{
+    
+  var divContentName = el[0];
+  var title = el[3];
+  var feed_content = el[11];
+  var release = el[8];
+  var version = el[7];
+  var author = el[5];
+  var author_link = el[4];
+  var img_url = el[1];
+  var project_url = el[2];
+  var version_url = el[6];
+  var daysAgo = el[9];
+  var feed_url = el[10];
+
+
+  document.getElementById('list-cont').innerHTML += `<div id="${divContentName}">
+        <div class="tb-main-cont my-4">
+          <div class="tb-main">
+            <div class="tr-img px-2">
+                  <img class="feed-icon" src="${img_url}" alt="">
+              </div>
+              <div class="tr-name-cont"> 
+                <a class="tr-name" href="${project_url}" target="_blank">
+                  ${title}
+                </a>
+                <a class="tr-author" href="${author_link}" target="_blank">
+                  By ${author}
+                </a>
+              </div>
+              <div class="tr-ver">
+                  <a href="${version_url}" target="_blank">${version}</a>
+              </div>
+              <div class="tr-date-cont">
+                  <div class="tr-date">
+                    ${release}
+                  </div>
+                  <div class="tr-daysago">
+                    ${daysAgo} Days Ago
+                  </div>
+              </div>
+              <div class="tr-btinfo mx-3">
+                  <a onclick="contVisibility('${divContentName}')"><i id="icon${divContentName}" class="bi bi-chevron-down"></i></a>
+              </div>
+          </div>
+        <div class="tb-more-options ml-2">
+            <div class="tr-btdel mx-2">
+                <a><i class="bi bi-trash" onclick="delFeed('${feed_url}')"></i></a>
+            </div>
+            <div class="tr-btmore mx-2 d-none">
+                <a onclick="openContextMenu(event)"><i class="bi bi-three-dots-vertical"></i></a>
+            </div>
+        </div>
+        </div>
+        <div id="tb${divContentName}" class="tb-content py-2 d-none">
+          <div class="tr-descripHeader">
+            Description
+          </div>
+          <div class="tr-descrip">
+            ${feed_content}
+          </div>
+        </div>
+      </div>`;
+  })
 }
 
 function get() {
@@ -78,6 +160,24 @@ function get() {
   }
 }
 
+function sortUpFunction(a, b) {
+  if (a[9] === b[9]) {
+      return 0;
+  }
+  else {
+      return (a[9] < b[9]) ? -1 : 1;
+  }
+}
+
+function sortDownFunction(a, b) {
+  if (a[9] === b[9]) {
+      return 0;
+  }
+  else {
+      return (a[9] > b[9]) ? -1 : 1;
+  }
+}
+
 function populateData() {
 
   var count = 0;
@@ -86,7 +186,7 @@ function populateData() {
     $("#add-main-cont").removeClass("d-block").addClass("d-none")
     $(".load-icon").removeClass("d-none").addClass("d-block")
     $(".cont-list").removeClass("d-none").addClass("d-block")
-
+    mainList = [];
     document.getElementById('list-cont').innerHTML = "";
     for (x = 0; x < gitList.length; x++) {
       var feed = gitList[x];
@@ -149,59 +249,15 @@ function populateData() {
         var difference = Math.abs(new Date() - d);
         daysAgo = parseInt(difference / (1000 * 3600 * 24))
 
-
-        document.getElementById('list-cont').innerHTML += `<div id="${divContentName}">
-        <div class="tb-main-cont my-4">
-          <div class="tb-main">
-            <div class="tr-img px-2">
-                  <img class="feed-icon" src="${img_url}" alt="">
-              </div>
-              <div class="tr-name-cont"> 
-                <a class="tr-name" href="${project_url}" target="_blank">
-                  ${title}
-                </a>
-                <a class="tr-author" href="${author_link}" target="_blank">
-                  By ${author}
-                </a>
-              </div>
-              <div class="tr-ver">
-                  <a href="${version_url}" target="_blank">${version}</a>
-              </div>
-              <div class="tr-date-cont">
-                  <div class="tr-date">
-                    ${release}
-                  </div>
-                  <div class="tr-daysago">
-                    ${daysAgo} Days Ago
-                  </div>
-              </div>
-              <div class="tr-btinfo mx-3">
-                  <a onclick="contVisibility('${divContentName}')"><i id="icon${divContentName}" class="bi bi-chevron-down"></i></a>
-              </div>
-          </div>
-        <div class="tb-more-options ml-2">
-            <div class="tr-btdel mx-2">
-                <a><i class="bi bi-trash" onclick="delFeed('${feed_url}')"></i></a>
-            </div>
-            <div class="tr-btmore mx-2 d-none">
-                <a onclick="openContextMenu(event)"><i class="bi bi-three-dots-vertical"></i></a>
-            </div>
-        </div>
-        </div>
-        <div id="tb${divContentName}" class="tb-content py-2 d-none">
-          <div class="tr-descripHeader">
-            Description
-          </div>
-          <div class="tr-descrip">
-            ${feed_content}
-          </div>
-        </div>
-      </div>`;
+        var test_array = [divContentName, img_url, project_url, title, author_link, author, version_url, version, release, daysAgo, feed_url, feed_content]
+        mainList.push(test_array)
+        sortUpRel();
 
         $(".load-icon").removeClass("d-block").addClass("d-none")
         $(".tr-header-name").text("PROJECT (" + count + ")")
       });
       // $(".load-icon").removeClass("d-block").addClass("d-none")
+      
 
     }
   }
