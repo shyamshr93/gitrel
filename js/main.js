@@ -21,7 +21,7 @@ function addUrlToArray(giturl) {
 
   giturl = giturl.replace(/([^:]\/)\/+/g, "$1");
   if (validURL(giturl) && giturl.includes("releases.atom") && giturl.includes("github.com")) {
-    set("https://gitcors.herokuapp.com/" + giturl)
+    set("https://web-production-f2ba.up.railway.app/" + giturl)
   }
   else {
     window.alert("Failed to add to list, Make sure you have the correct url")
@@ -210,7 +210,7 @@ function populateData() {
 
         //console.log($(data).find("title").first().text())
 
-        var feed_url = "https://gitcors.herokuapp.com/" + $(data).find("link").first().attr('href') + ".atom";
+        var feed_url = "https://web-production-f2ba.up.railway.app/" + $(data).find("link").first().attr('href') + ".atom";
 
         project_url = $(data).find("link").first().attr('href').replace("releases", "")
 
