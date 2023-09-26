@@ -21,7 +21,7 @@ function addUrlToArray(giturl) {
 
   giturl = giturl.replace(/([^:]\/)\/+/g, "$1");
   if (validURL(giturl) && giturl.includes("releases.atom") && giturl.includes("github.com")) {
-    set("hhttps://cors-jl6z.onrender.com/" + giturl)
+    set("https://cors-jl6z.onrender.com/" + giturl)
   }
   else {
     window.alert("Failed to add to list, Make sure you have the correct url")
